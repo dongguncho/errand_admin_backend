@@ -1,0 +1,75 @@
+import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+
+@Index("user_pk", ["userId"], {unique: true})
+@Entity("user", {schema:"errand"})
+export class User {
+    @PrimaryGeneratedColumn({
+        type: "int",
+        name: "user_id",
+        comment: "유저아이디",
+    })
+    userId!: number;
+
+    @Column("varchar", {
+        name: "nick_name",
+        comment: "닉네임",
+        length: 45,
+    })
+    nickName!: string;
+
+    @Column("varchar", {
+        name: "email",
+        comment: "이메일",
+        length: 45,
+    })
+    email!: string;
+    
+    @Column("varchar", {
+        name: "name",
+        comment: "",
+        length: 45,
+    })
+    name!: string;
+
+    @Column("varchar", {
+        name: "password",
+        comment: "",
+        length: 45,
+    })
+    password!: string;
+
+    @Column("varchar", {
+        name: "profile_img",
+        comment: "",
+        length: 45,
+    })
+    profileImg!: string;
+
+    @Column("varchar", {
+        name: "birth",
+        comment: "",
+        length: 45,
+    })
+    birth!: string;
+
+    @Column("varchar", {
+        name: "gender",
+        comment: "",
+        length: 45,
+    })
+    gender!: string;
+
+    @Column("varchar", {
+        name: "create_dt",
+        comment: "",
+        length: 45
+    })
+    createDt!: string;
+
+    @Column("varchar", {
+        name: "update_dt",
+        comment: "",
+        length: 45,
+    })
+    updateDt!: string;
+}
