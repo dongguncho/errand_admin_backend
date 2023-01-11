@@ -1,74 +1,75 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { Column, Entity, Index, PrimaryGeneratedColumn } from "typeorm";
+
 
 @Entity("user", {schema:"errand"})
-export class User{
+export class User {
     @PrimaryGeneratedColumn({
         type: "int",
         name: "user_id",
         comment: "유저아이디",
     })
-    userId: number;
+    userId!: number;
 
     @Column("varchar", {
         name: "nick_name",
         comment: "닉네임",
         length: 45,
     })
-    nickName: string;
+    nickName!: string;
 
     @Column("varchar", {
         name: "email",
         comment: "이메일",
         length: 45,
     })
-    email: string;
+    email!: string;
     
     @Column("varchar", {
         name: "name",
         comment: "",
         length: 45,
     })
-    name: string;
+    name!: string;
 
     @Column("varchar", {
         name: "password",
         comment: "",
         length: 45,
     })
-    password: string;
+    password!: string;
 
     @Column("varchar", {
         name: "profile_img",
         comment: "",
         length: 45,
     })
-    profileImg: string;
+    profileImg!: string;
 
     @Column("varchar", {
         name: "birth",
         comment: "",
         length: 45,
     })
-    birth: string;
+    birth!: string;
 
     @Column("varchar", {
         name: "gender",
         comment: "",
         length: 45,
     })
-    gender: string;
+    gender!: string;
 
-    @Column("datetime", {
-        name: "reg_dt",
-        comment: "등록일시",
-        default: () => "CURRENT_TIMESTAMP",
+    @Column("varchar", {
+        name: "create_dt",
+        comment: "",
+        length: 45
     })
-    regDt: Date;
+    createDt!: string;
 
-    @Column("datetime", { 
-        name: "mod_dt", 
-        comment: "수정일시", 
-        default: () => "CURRENT_TIMESTAMP", 
+    @Column("varchar", {
+        name: "update_dt",
+        comment: "",
+        length: 45,
     })
-    modDt: Date;    
+    updateDt!: string;
 }

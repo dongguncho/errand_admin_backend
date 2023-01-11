@@ -1,34 +1,34 @@
-// import express from 'express';
-// import apiRoute from './router/index';
-// const app = express();
-
-// app.use(express.json());	// request body를 express에서 json으로 받아 온다.
-// app.use('/', apiRoute);	    // 엔드포인트에 요청이 들어오면 router 폴더로 분기한다.
-
-// app.listen('3001', () => {
-//     console.log(`
-//   ################################################
-//   🛡️  Server listening on port: 3001 🛡️
-//   ################################################
-// `);
-// });
-
 import express from 'express';
 import compression from 'compression';
 import cors from 'cors';
+import routes from './routes';
 
-class App {
+export class App {
   private app: express.Application
+  private port: number;
   constructor() {
     this.app = express()
-    this.config()
+    this.port = Number(process.env.SERVER_PORT) || 3001;
+    this.initializeMiddlewares()
+    this.initializeRoutes()
   }
+  public listen() {
+    this.app.listen(this.port, () => {
+        console.log(`
+            ##########################################
+            🛡️ Server listening on port: ${this.port} 🛡️
+            ##########################################
+        `)
+    });
+}
 
-  public config(): void {
-    this.app.set('port', process.env.PORT || 3000)
+  private initializeMiddlewares() {
     this.app.use(express.json())
     this.app.use(express.urlencoded({extended:false}))
     this.app.use(compression())
     this.app.use(cors())
   }
+  private initializeRoutes() {
+    routes(this.app);
+}
 }
