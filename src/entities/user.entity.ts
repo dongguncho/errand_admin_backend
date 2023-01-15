@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm";
 
 @Entity("user", {schema:"errand"})
-export class User{
+export class User {
     @PrimaryGeneratedColumn({
         type: "int",
         name: "user_id",
