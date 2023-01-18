@@ -5,6 +5,7 @@ import routes from './routes';
 import session from 'express-session';
 import passport from 'passport';
 import { Passport } from './passport';
+import logger from './config/logger';
 
 export class App {
   private app: express.Application
@@ -19,7 +20,7 @@ export class App {
   }
   public listen() {
     this.app.listen(this.port, () => {
-        console.log(`
+        logger.info(`
             ##########################################
             🛡️ Server listening on port: ${this.port} 🛡️
             ##########################################

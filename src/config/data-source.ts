@@ -1,5 +1,6 @@
-import {DataSource} from "typeorm"
-import {join} from 'path'
+import { DataSource } from "typeorm"
+import { join } from 'path'
+import logger from "./logger"
 
 export const appDataSource = new DataSource ({
  type: 'mysql',
@@ -11,12 +12,11 @@ export const appDataSource = new DataSource ({
  synchronize: Boolean(process.env.DATA_BASE_SYNCHRONIZE),
  entities: [join(__dirname + '/../entities/*.entity.ts')],
  subscribers: [],
- 
  migrations: []
 })
 appDataSource.initialize()
     .then(() => {
         // here you can start to work with your database
-        console.log('success cunnection')
+        logger.info('database success cunnection')
     })
-    .catch((error) => console.log(error))
+    .catch((error) => logger.info(error))
