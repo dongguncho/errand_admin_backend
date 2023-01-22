@@ -14,6 +14,7 @@ export class UserController {
      * @param res 
      * @param next 
      */
+    
     public findUser = async (req: Request, res: Response, next: NextFunction) =>{
         const userList = await this.UserService.findUserList(req)
         res.status(200).json(userList)
