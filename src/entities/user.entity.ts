@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Timestamp } f
 @Entity("user", {schema:"errand"})
 export class User {
     @PrimaryGeneratedColumn({
-        type: "int",
+        type: "bigint",
         name: "user_id",
         comment: "유저아이디",
     })
@@ -38,11 +38,11 @@ export class User {
     password: string;
 
     @Column("varchar", {
-        name: "profile_img",
+        name: "profile_img_no",
         comment: "",
         length: 45,
     })
-    profileImg: string;
+    profileImgNo: string;
 
     @Column("varchar", {
         name: "birth",
@@ -61,14 +61,14 @@ export class User {
     @Column("datetime", {
         name: "reg_dt",
         comment: "등록일시",
-        default: () => "CURRENT_TIMESTAMP",
+        // default: () => "CURRENT_TIMESTAMP",
     })
     regDt: Date;
 
     @Column("datetime", { 
         name: "mod_dt", 
         comment: "수정일시", 
-        default: () => "CURRENT_TIMESTAMP", 
+        // default: () => "CURRENT_TIMESTAMP", 
     })
     modDt: Date;    
 }

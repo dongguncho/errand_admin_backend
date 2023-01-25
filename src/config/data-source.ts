@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm"
 import { join } from 'path'
 import logger from "./logger"
+import { WinstonAdaptor } from 'typeorm-logger-adaptor/logger/winston'
 
 export const appDataSource = new DataSource ({
  type: 'mysql',
@@ -11,6 +12,7 @@ export const appDataSource = new DataSource ({
  database: process.env.DATABASE_NAME,
  synchronize: Boolean(process.env.DATA_BASE_SYNCHRONIZE),
  entities: [join(__dirname + '/../entities/*.entity.ts')],
+//  logger: new WinstonAdaptor(logger, ["query"], true),
  subscribers: [],
  migrations: []
 })
