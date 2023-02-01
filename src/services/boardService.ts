@@ -25,8 +25,10 @@ export class BoardService {
    * @returns findBoardDetail
    */
   public async findBoardDetail(req: Request): Promise<Board> {
-    const { boardId } = req.body;
-    const findBoardDetail = await this.boardRepository.findOneBy({ boardId });
+    const boardId = req.params;
+    const findBoardDetail = await this.boardRepository.findOneBy({
+      boardId: Number(boardId),
+    });
     return findBoardDetail;
   }
   /**

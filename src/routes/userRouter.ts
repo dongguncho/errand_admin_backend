@@ -8,6 +8,6 @@ const userController = new UserController();
 router.get("/", isAuthenticated(), userController.findUser);
 router.post("/login", userController.login);
 router.post("/", userController.addUser);
-router.patch("/modify", userController.modifyUser);
+router.patch("/modify", isAuthenticated(), userController.modifyUser);
 
 export default router;
