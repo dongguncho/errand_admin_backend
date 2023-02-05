@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { BoardCmt } from "./boardCmt.entity";
 
 @Entity()
 export class Board {
@@ -45,4 +46,7 @@ export class Board {
     comment: "수정일시",
   })
   modDt: Date;
+
+  @OneToMany((type) => BoardCmt, (boardCmt) => boardCmt.board)
+  comments: Comment[];
 }

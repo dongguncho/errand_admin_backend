@@ -14,8 +14,12 @@ export class BoardController {
    * @param next
    */
   public async findBoardList(req: Request, res: Response, next: NextFunction) {
-    const findBoardList = await this.BoardService.findBoardList();
-    res.status(200).json(findBoardList);
+    try {
+      const findBoardList = await this.BoardService.findBoardList();
+      res.status(200).json(findBoardList);
+    } catch (error) {
+      next(error);
+    }
   }
   /**
    * 게시판 상세 조회
@@ -28,12 +32,26 @@ export class BoardController {
     res: Response,
     next: NextFunction
   ) {
-    const findBoardDetail = await this.BoardService.findBoardDetail(req);
-    res.status(200).json(findBoardDetail);
+    try {
+      const findBoardDetail = await this.BoardService.findBoardDetail(req);
+      res.status(200).json(findBoardDetail);
+    } catch (error) {
+      next(error);
+    }
   }
 
+  /**
+   * 게시판 등록
+   * @param req
+   * @param res
+   * @param next
+   */
   public async addBoard(req: Request, res: Response, next: NextFunction) {
-    const addBoard = await this.BoardService.addBoard(req);
-    res.status(200).json(addBoard);
+    try {
+      const addBoard = await this.BoardService.addBoard(req);
+      res.status(200).json(addBoard);
+    } catch (error) {
+      next(error);
+    }
   }
 }
