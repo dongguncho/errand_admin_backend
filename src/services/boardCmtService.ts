@@ -39,6 +39,8 @@ export class BoardCmtServie {
     await appDataSource.transaction(async (manager) => {
       const boardCmt = new BoardCmt();
       boardCmt.content = boardCmtDto.content;
+      boardCmt.regrNo = 1;
+      boardCmt.modrNo = 1;
       await manager.save(boardCmt);
     });
   }
@@ -55,6 +57,7 @@ export class BoardCmtServie {
     await appDataSource.transaction(async (manager) => {
       const boardCmt = new BoardCmt();
       boardCmt.content = boardCmtDto.content;
+      boardCmt.modrNo = 1;
       await this.boardRepository.merge(boardCmtInfo, boardCmt);
       await manager.save(boardCmtInfo);
     });

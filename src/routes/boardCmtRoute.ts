@@ -4,7 +4,9 @@ import { isAuthenticated } from "../passport/authenticate.passport";
 
 const router: Router = express.Router();
 const boardCmtController = new BoardCmtController();
-
+/**
+ * 댓글 라우트
+ */
 router.get("/", isAuthenticated(), boardCmtController.findBoardCmtList);
 router.get("/:commentId", isAuthenticated(), boardCmtController.findBoardCmt);
 router.post("/", isAuthenticated(), boardCmtController.addBoardCmt);

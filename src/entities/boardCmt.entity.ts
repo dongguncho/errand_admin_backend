@@ -16,6 +16,18 @@ export class BoardCmt {
   })
   content: string;
 
+  @Column("bigint", {
+    name: "regr_no",
+    comment: "등록자번호",
+  })
+  regrNo: number;
+
+  @Column("bigint", {
+    name: "modr_no",
+    comment: "수정자번호",
+  })
+  modrNo: number;
+
   @Column("datetime", {
     name: "reg_dt",
     comment: "등록일시",

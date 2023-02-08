@@ -4,7 +4,9 @@ import { isAuthenticated } from "../passport/authenticate.passport";
 
 const router: Router = express.Router();
 const userController = new UserController();
-
+/**
+ * 회원 라우트
+ */
 router.get("/", isAuthenticated(), userController.findUser);
 router.post("/login", userController.login);
 router.post("/", userController.addUser);
