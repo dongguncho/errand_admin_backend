@@ -10,6 +10,12 @@ export class BoardCmt {
   })
   commentId: number;
 
+  //   @Column("bigint", {
+  //     name: "board_id",
+  //     comment: "게시판아이디",
+  //   })
+  //   boardId: number;
+
   @Column("text", {
     name: "content",
     comment: "댓글내용",
