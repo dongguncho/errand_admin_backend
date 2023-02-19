@@ -5,6 +5,7 @@ import { User } from "../entities/user.entity";
 import jwt from "jsonwebtoken";
 import dayjs from "dayjs";
 import logger from "../config/logger";
+import { encode } from "../utils/ciper.util";
 /**
  * 유저 서비스
  */
@@ -83,8 +84,8 @@ export class userService {
       user.nickName = userDto.nickName;
       user.email = userDto.email;
       user.name = userDto.name;
-      user.password = userDto.password;
-      user.birth = userDto.birth;
+      user.password = encode(userDto.password);
+      user.birth = encode(userDto.birth);
       user.profileImgNo = userDto.profileImgNo;
       user.gender = userDto.gender;
       user.regDt = dayjs().toDate();
@@ -92,5 +93,14 @@ export class userService {
       await manager.save(user);
     });
     return "등록되었습니다";
+  }
+  /**
+   * 회원탈퇴
+   */
+
+  public async removeUser(req: Request): Promise<any> {
+    const userId = req.body;
+    await this.userRepository.delete(userId);
+    return "삭제되었습니다";
   }
 }

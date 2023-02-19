@@ -70,4 +70,19 @@ export class UserController {
       next(error);
     }
   };
+  /**
+   * 회원탈퇴
+   */
+  public removeUser = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const removeUser = await this.UserService.removeUser(req);
+      res.status(200).json(removeUser);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
