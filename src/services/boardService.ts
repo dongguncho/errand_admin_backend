@@ -52,4 +52,14 @@ export class BoardService {
     });
     return "등록 성공했습니다.";
   }
+
+  /**
+   * 게시판 삭제
+   */
+
+  public async removeBoard(req: Request): Promise<any> {
+    const boardId = req.params;
+    await this.boardRepository.delete(boardId);
+    return "삭제되었습니다";
+  }
 }

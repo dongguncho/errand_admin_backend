@@ -54,4 +54,18 @@ export class BoardController {
       next(error);
     }
   }
+  /**
+   * 게시판 등록
+   * @param req
+   * @param res
+   * @param next
+   */
+  public async removeBoard(req: Request, res: Response, next: NextFunction) {
+    try {
+      const removeBoard = await this.BoardService.removeBoard(req);
+      res.status(200).json(removeBoard);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
