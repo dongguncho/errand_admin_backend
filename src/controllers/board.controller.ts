@@ -66,6 +66,7 @@ export class BoardController {
       res.status(200).json(removeBoard);
     } catch (error) {
       next(error);
+      
     }
   }
 }
