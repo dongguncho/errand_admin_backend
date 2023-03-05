@@ -11,5 +11,10 @@ router.get("/", isAuthenticated(), boardCmtController.findBoardCmtList);
 router.get("/:commentId", isAuthenticated(), boardCmtController.findBoardCmt);
 router.post("/", isAuthenticated(), boardCmtController.addBoardCmt);
 router.patch("/", isAuthenticated(), boardCmtController.modifyBoardCmt);
+router.delete(
+  "/:commentId",
+  isAuthenticated(),
+  boardCmtController.removeBoardCmt
+);
 
 export default router;

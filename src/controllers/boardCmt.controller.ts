@@ -66,4 +66,18 @@ export class BoardCmtController {
       next(error);
     }
   }
+  /**
+   * 게시판 댓글 삭제
+   * @param req
+   * @param res
+   * @param next
+   */
+  public async removeBoardCmt(req: Request, res: Response, next: NextFunction) {
+    try {
+      const removeBoardCmt = await this.boardCmntService.removeBoardCmt(req);
+      res.status(200).json(removeBoardCmt);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
