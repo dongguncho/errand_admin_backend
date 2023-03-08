@@ -5,7 +5,7 @@ import { User } from "../entities/user.entity";
 import jwt from "jsonwebtoken";
 import dayjs from "dayjs";
 import logger from "../config/logger";
-import { encode } from "../utils/ciper.util";
+import { encode, decode } from "../utils/ciper.util";
 /**
  * 유저 서비스
  */
@@ -38,7 +38,7 @@ export class userService {
     const { email, password } = req.body;
     const userInfo = await this.userRepository.findOneBy({ email });
 
-    if (userInfo.password === password) {
+    if (decode(userInfo.password) === password) {
       const token = jwt.sign(
         {
           userId: userInfo.userId,
