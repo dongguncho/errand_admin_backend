@@ -10,7 +10,7 @@ const userController = new UserController();
 router.get("/", isAuthenticated(), userController.findUser);
 router.post("/login", userController.login);
 router.post("/", userController.addUser);
-router.patch("/modify", isAuthenticated(), userController.modifyUser);
+router.patch("/", isAuthenticated(), userController.modifyUser);
 router.delete("/", isAuthenticated(), userController.removeUser);
 
 export default router;
