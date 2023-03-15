@@ -23,9 +23,11 @@ export class userService {
    */
 
   public async findUserList(req: Request): Promise<User[]> {
-    const { gender } = req.params;
+    const { userId } = req.params;
 
-    const userList = await this.userRepository.find({});
+    const userList = await this.userRepository.find({
+      where: { userId: Number(userId) },
+    });
     // const userList = await appDataSource.manager.find(User,{})
     return userList;
   }
@@ -60,7 +62,6 @@ export class userService {
    */
   public async modifyUser(req: Request): Promise<User> {
     const userDto = req.body;
-    console.log(userDto);
     const userInfo = await this.userRepository.findOneBy({
       userId: userDto.userId,
     });
@@ -99,7 +100,7 @@ export class userService {
    */
 
   public async removeUser(req: Request): Promise<any> {
-    const userId = req.body;
+    const userId = req.params;
     await this.userRepository.delete(userId);
     return "삭제되었습니다";
   }

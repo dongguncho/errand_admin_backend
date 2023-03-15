@@ -10,6 +10,7 @@ const boardController = new BoardController();
 router.get("/", isAuthenticated(), boardController.findBoardList);
 router.get("/:boardId", isAuthenticated(), boardController.findBoardDetail);
 router.post("/", isAuthenticated(), boardController.addBoard);
+router.patch("/", isAuthenticated(), boardController.modifyBoard);
 router.delete("/:boardId", isAuthenticated(), boardController.removeBoard);
 
 export default router;

@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { StatusEnum } from "../middlewares/HttpException";
 import { userService } from "../services/userService";
 /**
  * 유저 컨트롤러
@@ -17,7 +18,7 @@ export class UserController {
   public findUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userList = await this.UserService.findUserList(req);
-      res.status(200).json(userList);
+      res.status(StatusEnum.OK).json(userList);
     } catch (error) {
       next(error);
     }
@@ -31,7 +32,7 @@ export class UserController {
   public login = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const loginInfo = await this.UserService.login(req);
-      res.status(200).json(loginInfo);
+      res.status(StatusEnum.OK).json(loginInfo);
     } catch (error) {
       next(error);
     }
@@ -50,7 +51,7 @@ export class UserController {
   ) => {
     try {
       const userInfo = await this.UserService.modifyUser(req);
-      res.status(200).json(userInfo);
+      res.status(StatusEnum.OK_MODIFY).json(userInfo);
     } catch (error) {
       next(error);
     }
@@ -65,7 +66,7 @@ export class UserController {
   public addUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const addUser = await this.UserService.addUser(req);
-      res.status(200).json(addUser);
+      res.status(StatusEnum.OK_INSERT).json(addUser);
     } catch (error) {
       next(error);
     }
@@ -80,7 +81,7 @@ export class UserController {
   ) => {
     try {
       const removeUser = await this.UserService.removeUser(req);
-      res.status(200).json(removeUser);
+      res.status(StatusEnum.OK_DELETE).json(removeUser);
     } catch (error) {
       next(error);
     }

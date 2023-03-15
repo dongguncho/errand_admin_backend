@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { Request } from "express";
 import { Repository } from "typeorm";
 import { appDataSource } from "../config/data-source";
@@ -52,7 +53,27 @@ export class BoardService {
     });
     return "등록 성공했습니다.";
   }
-
+  /**
+   * 게시판 수정
+   * @param req
+   */
+  public async modifyBoard(req: Request): Promise<any> {
+    const boardDto = req.body;
+    const boardInfo = await this.boardRepository.findOne({
+      where: { boardId: boardDto.boardId },
+    });
+    await appDataSource.manager.transaction(async (manager) => {
+      const board = new Board();
+      board.title = boardDto.title;
+      board.content = boardDto.content;
+      board.atchFileNo = boardDto.atchFileNo;
+      board.modrNo = 0;
+      board.modDt = dayjs().toDate();
+      const modifyBoard = await this.boardRepository.merge(boardInfo, board);
+      await manager.save(modifyBoard);
+    });
+    return "수정 성공하였습니다.";
+  }
   /**
    * 게시판 삭제
    */
