@@ -20,6 +20,11 @@ export class errandType {
     comment: "심부름상태",
     length: 10,
   })
+  @Column("varchar", {
+    name: "errand_statusCd",
+    comment: "심부름상태코드",
+    length: 10,
+  })
   errandSataus: string;
 
   @Column("datetime", {
