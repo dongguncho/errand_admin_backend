@@ -10,7 +10,7 @@ export class cuponService {
   }
 
   public async findCuponList(req: Request): Promise<Cupon[]> {
-    const cuponList = this.cuponRepository.find({});
+    const cuponList = await this.cuponRepository.find({});
     return cuponList;
   }
 }
