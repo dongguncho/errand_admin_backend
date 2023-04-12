@@ -13,4 +13,8 @@ export class cuponService {
     const cuponList = await this.cuponRepository.find({});
     return cuponList;
   }
+  public async addCupon(req: Request): Promise<Cupon[]> {
+    const cuponList = await this.cuponRepository.find({});
+    return cuponList;
+  }
 }
