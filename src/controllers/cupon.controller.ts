@@ -14,8 +14,16 @@ export class CuponController {
     next: NextFunction
   ) => {
     try {
-      const cuponList = await this.cuponService.findCuponList(req);
-      res.status(200).json(cuponList);
+      const cupondata = await this.cuponService.findCuponList(req);
+      res.status(200).json(cupondata);
+    } catch (error) {
+      next(error);
+    }
+  };
+  public addCupon = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const cupondata = await this.cuponService.addCupon(req);
+      res.status(200).json(cupondata);
     } catch (error) {
       next(error);
     }
