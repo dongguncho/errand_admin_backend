@@ -50,9 +50,9 @@ export class BoardCmtServie {
    * @returns
    */
   public async modifyBoardCmt(req: Request): Promise<void> {
-    const boardCmtDto = req.body;
+    const boardCmtDto = req.params;
     const boardCmtInfo = await this.boardCmtRepository.findOne({
-      where: { commentId: boardCmtDto.commentId },
+      where: { commentId: Number(boardCmtDto.commentId) },
     });
     await appDataSource.transaction(async (manager) => {
       const boardCmt = new BoardCmt();
