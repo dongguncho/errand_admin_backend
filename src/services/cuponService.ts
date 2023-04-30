@@ -25,4 +25,19 @@ export class cuponService {
     });
     return true;
   }
+  public async modifyCupon(req: Request): Promise<any> {
+    const cupunData = req.body;
+    const cuponInfo = await this.cuponRepository.findOne({
+      where: { cuponId: cupunData.cuponId },
+    });
+    await appDataSource.transaction(async (manager) => {
+      const cupon = new Cupon();
+      cupon.useTf = "Y";
+      cupon.regrNo = 0;
+      cupon.modrNo = 0;
+      const cuponMerge = this.cuponRepository.merge(cupon, cuponInfo);
+      await manager.save(cuponMerge);
+    });
+    return true;
+  }
 }
