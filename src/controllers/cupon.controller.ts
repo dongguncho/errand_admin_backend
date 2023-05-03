@@ -28,4 +28,17 @@ export class CuponController {
       next(error);
     }
   };
+
+  public modifyCupon = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const cupondata = await this.cuponService.modifyCupon(req);
+      res.status(200).json(cupondata);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
