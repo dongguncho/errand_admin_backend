@@ -40,4 +40,12 @@ export class cuponService {
     });
     return true;
   }
+
+  public async deleteCupon(req: Request): Promise<any> {
+    const cupunData = req.body;
+    const cuponInfo = await this.cuponRepository.findOne({
+      where: { cuponId: cupunData.cuponId },
+    });
+    await this.cuponRepository.delete(cuponInfo.cuponId);
+  }
 }
