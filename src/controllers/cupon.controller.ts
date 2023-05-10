@@ -41,4 +41,17 @@ export class CuponController {
       next(error);
     }
   };
+
+  public deleteCupon = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    try {
+      const cupondata = await this.cuponService.deleteCupon(req);
+      res.status(200).json(cupondata);
+    } catch (error) {
+      next(error);
+    }
+  };
 }
