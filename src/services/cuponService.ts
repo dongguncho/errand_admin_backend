@@ -8,11 +8,20 @@ export class cuponService {
   constructor() {
     this.cuponRepository = appDataSource.getRepository(Cupon);
   }
-
+  /**
+   * 쿠폰조회 서비스
+   * @param req
+   * @returns
+   */
   public async findCuponList(req: Request): Promise<Cupon[]> {
     const cuponList = await this.cuponRepository.find({});
     return cuponList;
   }
+  /**
+   * 쿠폰등록 서비스
+   * @param req
+   * @returns
+   */
   public async addCupon(req: Request): Promise<any> {
     const cupunData = req.body;
     await appDataSource.transaction(async (manager) => {
@@ -25,6 +34,11 @@ export class cuponService {
     });
     return true;
   }
+  /**
+   * 쿠폰수정 서비스
+   * @param req
+   * @returns
+   */
   public async modifyCupon(req: Request): Promise<any> {
     const cupunData = req.body;
     const cuponInfo = await this.cuponRepository.findOne({
@@ -40,7 +54,11 @@ export class cuponService {
     });
     return true;
   }
-
+  /**
+   * 쿠폰삭제 서비스
+   * @param req
+   * @returns
+   */
   public async deleteCupon(req: Request): Promise<any> {
     const cupunData = req.body;
     const cuponInfo = await this.cuponRepository.findOne({

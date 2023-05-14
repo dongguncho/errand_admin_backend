@@ -7,6 +7,12 @@ export class CuponController {
   constructor() {
     this.cuponService = new cuponService();
   }
+  /**
+   * 쿠폰 조회
+   * @param req
+   * @param res
+   * @param next
+   */
 
   public findCupon = async (
     req: Request,
@@ -20,6 +26,12 @@ export class CuponController {
       next(error);
     }
   };
+  /**
+   * 쿠폰 등록
+   * @param req
+   * @param res
+   * @param next
+   */
   public addCupon = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const cupondata = await this.cuponService.addCupon(req);
@@ -28,7 +40,12 @@ export class CuponController {
       next(error);
     }
   };
-
+  /**
+   * 쿠폰 수정
+   * @param req
+   * @param res
+   * @param next
+   */
   public modifyCupon = async (
     req: Request,
     res: Response,
@@ -41,7 +58,12 @@ export class CuponController {
       next(error);
     }
   };
-
+  /**
+   * 쿠폰 삭제
+   * @param req
+   * @param res
+   * @param next
+   */
   public deleteCupon = async (
     req: Request,
     res: Response,
