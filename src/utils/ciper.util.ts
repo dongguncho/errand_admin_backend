@@ -25,6 +25,7 @@ const encode = (buffer?: string): string => {
         result = cipher.update(buffer, IN_ENCODING, OUT_ENCODING);
         result += cipher.final(OUT_ENCODING);
     }
+    
     return result;
 }
 
