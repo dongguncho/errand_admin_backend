@@ -7,7 +7,7 @@ const cuponController = new CuponController();
 
 router.get("/", isAuthenticated(), cuponController.findCupon);
 router.post("/", isAuthenticated(), cuponController.addCupon);
-router.patch("/", isAuthenticated(), cuponController.modifyCupon);
+router.patch("/:cuponId", isAuthenticated(), cuponController.modifyCupon);
 router.delete("/:cuponId", isAuthenticated(), cuponController.deleteCupon);
 
 export default router;
