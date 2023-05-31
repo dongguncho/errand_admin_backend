@@ -60,9 +60,9 @@ export class cuponService {
    * @returns
    */
   public async deleteCupon(req: Request): Promise<any> {
-    const cupunData = req.body;
+    const cuponId = req.params;
     const cuponInfo = await this.cuponRepository.findOne({
-      where: { cuponId: cupunData.cuponId },
+      where: { cuponId: Number(cuponId) },
     });
     await this.cuponRepository.delete(cuponInfo.cuponId);
   }
