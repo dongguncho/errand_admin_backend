@@ -65,5 +65,6 @@ export class cuponService {
       where: { cuponId: Number(cuponId) },
     });
     await this.cuponRepository.delete(cuponInfo.cuponId);
+    return true;
   }
 }
