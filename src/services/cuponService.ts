@@ -51,6 +51,7 @@ export class cuponService {
       cupon.modrNo = 0;
       const cuponMerge = this.cuponRepository.merge(cupon, cuponInfo);
       await manager.save(cuponMerge);
+      return "수정되었습니다";
     });
     return true;
   }
@@ -65,6 +66,6 @@ export class cuponService {
       where: { cuponId: Number(cuponId) },
     });
     await this.cuponRepository.delete(cuponInfo.cuponId);
-    return true;
+    return "삭제되었습니다";
   }
 }
