@@ -60,6 +60,7 @@ export class BoardCmtServie {
       boardCmt.modrNo = 1;
       await this.boardCmtRepository.merge(boardCmtInfo, boardCmt);
       await manager.save(boardCmtInfo);
+      return "수정 되었습니다.";
     });
   }
   /**
