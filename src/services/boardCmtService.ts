@@ -42,6 +42,7 @@ export class BoardCmtServie {
       boardCmt.regrNo = 1;
       boardCmt.modrNo = 1;
       await manager.save(boardCmt);
+      return "등록 되었습니다.";
     });
   }
   /**
