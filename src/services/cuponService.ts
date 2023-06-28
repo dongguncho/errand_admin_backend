@@ -32,7 +32,7 @@ export class cuponService {
 
       await manager.save(cupon);
     });
-    return true;
+    return "등록되었습니다";
   }
   /**
    * 쿠폰수정 서비스
