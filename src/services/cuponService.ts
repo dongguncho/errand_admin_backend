@@ -53,7 +53,7 @@ export class cuponService {
       await manager.save(cuponMerge);
       return "수정되었습니다";
     });
-    return true;
+    return "수정되었습니다";
   }
   /**
    * 쿠폰삭제 서비스
