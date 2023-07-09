@@ -78,7 +78,7 @@ export class userService {
   /**
    * 회원가입
    */
-  public async addUser(req: Request): Promise<any> {
+  public async addUser(req: Request): Promise<String> {
     const userDto = req.body;
     await appDataSource.transaction(async (manager) => {
       const user = new User();

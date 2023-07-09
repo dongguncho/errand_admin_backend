@@ -38,7 +38,7 @@ export class BoardService {
    * @returns
    */
 
-  public async addBoard(req: Request): Promise<any> {
+  public async addBoard(req: Request): Promise<String> {
     const user = req.user;
     console.log(user);
     const boardDto = req.body;
@@ -57,7 +57,7 @@ export class BoardService {
    * 게시판 수정
    * @param req
    */
-  public async modifyBoard(req: Request): Promise<any> {
+  public async modifyBoard(req: Request): Promise<String> {
     const boardDto = req.body;
     const boardInfo = await this.boardRepository.findOne({
       where: { boardId: boardDto.boardId },
@@ -78,7 +78,7 @@ export class BoardService {
    * 게시판 삭제
    */
 
-  public async removeBoard(req: Request): Promise<any> {
+  public async removeBoard(req: Request): Promise<String> {
     const boardId = req.params;
     await this.boardRepository.delete(boardId);
     return "삭제되었습니다";

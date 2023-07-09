@@ -22,7 +22,7 @@ export class cuponService {
    * @param req
    * @returns
    */
-  public async addCupon(req: Request): Promise<any> {
+  public async addCupon(req: Request): Promise<String> {
     const cupunData = req.body;
     await appDataSource.transaction(async (manager) => {
       const cupon = new Cupon();
@@ -39,7 +39,7 @@ export class cuponService {
    * @param req
    * @returns
    */
-  public async modifyCupon(req: Request): Promise<any> {
+  public async modifyCupon(req: Request): Promise<String> {
     const cupunData = req.body;
     const cuponInfo = await this.cuponRepository.findOne({
       where: { cuponId: cupunData.cuponId },
@@ -60,7 +60,7 @@ export class cuponService {
    * @param req
    * @returns
    */
-  public async deleteCupon(req: Request): Promise<any> {
+  public async deleteCupon(req: Request): Promise<String> {
     const cuponId = req.params;
     const cuponInfo = await this.cuponRepository.findOne({
       where: { cuponId: Number(cuponId) },

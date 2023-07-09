@@ -34,7 +34,7 @@ export class BoardCmtServie {
    * @param req
    * @returns
    */
-  public async addBoardCmt(req: Request): Promise<void> {
+  public async addBoardCmt(req: Request): Promise<string> {
     const boardCmtDto = req.body;
     await appDataSource.transaction(async (manager) => {
       const boardCmt = new BoardCmt();
@@ -42,15 +42,15 @@ export class BoardCmtServie {
       boardCmt.regrNo = 1;
       boardCmt.modrNo = 1;
       await manager.save(boardCmt);
-      return "등록 되었습니다.";
     });
+    return "등록 되었습니다.";
   }
   /**
    * 게시판 댓글 수정
    * @param req
    * @returns
    */
-  public async modifyBoardCmt(req: Request): Promise<void> {
+  public async modifyBoardCmt(req: Request): Promise<string> {
     const boardCmtDto = req.params;
     const boardCmtInfo = await this.boardCmtRepository.findOne({
       where: { commentId: Number(boardCmtDto.commentId) },
@@ -61,8 +61,8 @@ export class BoardCmtServie {
       boardCmt.modrNo = 1;
       await this.boardCmtRepository.merge(boardCmtInfo, boardCmt);
       await manager.save(boardCmtInfo);
-      return "수정 되었습니다.";
     });
+    return "수정 되었습니다.";
   }
   /**
    * 게시판 댓글 삭제
