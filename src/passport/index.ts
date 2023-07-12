@@ -27,7 +27,6 @@ export class Passport {
             const member = await this.memberRepository.findOneBy({
               userId: payload.userId,
             });
-            console.log(member);
             if (!member && member.password !== payload.password) {
               return done(null, false);
             } else {
