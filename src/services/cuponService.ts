@@ -51,7 +51,6 @@ export class cuponService {
       cupon.modrNo = 0;
       const cuponMerge = this.cuponRepository.merge(cupon, cuponInfo);
       await manager.save(cuponMerge);
-      return "수정되었습니다";
     });
     return "수정되었습니다";
   }
