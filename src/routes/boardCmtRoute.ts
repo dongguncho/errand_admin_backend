@@ -15,7 +15,7 @@ router.patch(
   isAuthenticated(),
   boardCmtController.modifyBoardCmt
 );
-// 점코밋
+// 삭제 주석
 router.delete(
   "/:commentId",
   isAuthenticated(),
