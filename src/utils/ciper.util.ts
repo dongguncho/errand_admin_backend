@@ -59,7 +59,7 @@ const create = (buffer: string): Promise<Return> => {
     });
   });
 };
-
+//
 const compare = (
   buffer: string,
   oldPassword: string,
