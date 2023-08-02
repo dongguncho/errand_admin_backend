@@ -45,7 +45,7 @@ const decode = (buffer?: string): string => {
   }
   return result;
 };
-
+//
 const create = (buffer: string): Promise<Return> => {
   return new Promise((resolve, reject) => {
     const salt = crypto.randomBytes(64).toString(OUT_ENCODING);
