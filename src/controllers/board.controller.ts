@@ -40,7 +40,7 @@ export class BoardController {
       next(error);
     }
   }
-
+//
   /**
    * 게시판 등록
    * @param req

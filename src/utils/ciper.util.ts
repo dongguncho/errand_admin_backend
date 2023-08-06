@@ -28,7 +28,7 @@ const encode = (buffer?: string): string => {
 
   return result;
 };
-
+//
 const decode = (buffer?: string): string => {
   let result = "";
 
