@@ -14,7 +14,7 @@ export class Passport {
     this.jwtSecret = process.env.JWT_SECRET;
     this.memberRepository = appDataSource.getRepository(User);
   }
-
+  //
   public config() {
     passport.use(
       new this.jwtStrategy(
