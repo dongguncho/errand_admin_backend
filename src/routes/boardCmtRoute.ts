@@ -15,7 +15,7 @@ router.patch(
   isAuthenticated(),
   boardCmtController.modifyBoardCmt
 );
-//
+
 router.delete(
   "/:commentId",
   isAuthenticated(),
